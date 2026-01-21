@@ -876,7 +876,7 @@ You deployed a PostgreSQL Flexible Server using private access so the database t
 
 ## Task 02: Connect the Site-to-Site VPN
 
-> [!NOTE]
+> [!IMPORTANT]
 >
 > Should we consider moving this to [Exercise 00](#exercise-00-prepare-for-workload-migration-with-azure-migrate-and-discover-workloads-on-hyper-v-host)?
 
