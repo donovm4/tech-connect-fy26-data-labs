@@ -73,6 +73,12 @@ In this exercise, you'll:
 
 ## Task 01: Create a new migration project
 
+> [!IMPORTANT]
+>
+> We will need to create 2 separate Azure Migrate projects.
+>  1. business case, wave planning
+>  2. virtual machine migration
+
 ### Introduction
 Terra Firm Laboratories is ready to turn "we should move to Azure" into an actual plan Dennis can track and defend. An Azure Migrate project becomes the team's home base for discovery, assessment, and migration decisions-so everyone is working from the same inventory and the same assumptions.
 
@@ -134,6 +140,12 @@ You created an Azure Migrate project that will store discovery, assessment, and 
 
 ## Task 02: Register the Azure Migrate appliance
 
+> [!IMPORTANT]
+>
+> Removed as we are using agent-based migration with Azure Site Recovery Provider.
+
+<!--
+
 ### Introduction
 Before Terra Firm can estimate cost, downtime, or even a safe migration sequence, they need a clear picture of what's running on-premises. Registering the Azure Migrate appliance is how Dennis's team securely feeds Azure Migrate the facts-so the pilot workload can be assessed with real data instead of guesses.
 
@@ -154,7 +166,7 @@ In this task, you'll generate a project key from the Azure Migrate project and u
 
 1. [] On the **Overview** page, select **Start Discovery**, choose **Using Appliance**, then **For Azure**.
 
-    ![On the Project blade, Start Discovery--> Using Appliance--> For Azure is highlighted.](instructions312691/21-StartDiscovery.png)
+    ![On the Project blade, Start Discovery -> Using Appliance -> For Azure is highlighted.](instructions312691/21-StartDiscovery.png)
 
 1. [] On the **Discover** blade, under **Are your servers virtualized?**, select **Yes, with Hyper-V**.
 
@@ -209,8 +221,17 @@ In this task, you'll generate a project key from the Azure Migrate project and u
 #### Congratulations! 
 You generated a project key and successfully registered the Azure Migrate appliance to your project so it can upload discovery data.
 
+-->
+
 ===
+
 ## Task 03: Discover virtual machines and workloads
+
+> [!IMPORTANT]
+>
+> Removed as we are using agent-based migration with Azure Site Recovery Provider.
+
+<!--
 
 ### Introduction
 Terra Firm's pilot workload is meant to represent what they'll migrate at scale: Linux servers plus a database tier and supporting components. Discovery (including guest discovery) helps surface the details that matter for migration decisions-what OS and workloads are installed, what depends on what, and what needs extra attention for security and operations once it lands in Azure.
@@ -299,8 +320,10 @@ In this task, you'll configure discovery sources and credentials for your Hyper-
 #### Congratulations!
 You configured discovery sources and credentials and started discovery so Azure Migrate can populate server inventory and detect workloads (web apps and databases).
 
+-->
 
 ===
+
 # Exercise 01: Assess On-Prem workload readiness for migration
 
 ## Introduction
@@ -847,9 +870,15 @@ You deployed a PostgreSQL Flexible Server using private access so the database t
 
 -->
 
+
+
 ===
 
 ## Task 02: Connect the Site-to-Site VPN
+
+> [!NOTE]
+>
+> Should we consider moving this to [Exercise 00](#exercise-00-prepare-for-workload-migration-with-azure-migrate-and-discover-workloads-on-hyper-v-host)?
 
 ### Introduction
 Terra Firm doesn't want sensitive database traffic exposed, and they prefer private endpoints whenever possible. Establishing VPN connectivity gives the lab environment a secure path into Azure so the team can reach private resources (like the PostgreSQL service) during migration and validation-without punching public holes in the design.
@@ -1038,6 +1067,10 @@ In this task, you'll run a validation migration job, review results for errors, 
     | Migration mode | **Offline** |
 
 1. [] Select **Next: Runtime server >**
+
+> [!IMPORTANT]
+>
+> Petroula mentioned Runtime server step is not needed. Will remove once validated in lab testing.
 
 1. [] Next to Use runtime server, select **Yes** and then enter the following:
 
