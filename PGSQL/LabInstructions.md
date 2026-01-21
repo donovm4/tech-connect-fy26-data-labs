@@ -765,6 +765,12 @@ In this exercise, you'll:
 
 ## Task 01: Create the Azure Database for PostgreSQL flexible server
 
+> [!IMPORTANT]
+>
+> Removed as Azure Database for PostgreSQL flexible server will be pre-instanced for students.
+
+<!--
+
 ### Introduction
 For the pilot workload, Terra Firm wants to reduce management overhead and tighten security, especially with concerns about zero-day threats. Moving PostgreSQL to Azure Database for PostgreSQL Flexible Server gives Dennis's team a managed database foundation with built-in platform capabilities, while private access helps keep traffic off the public internet.
 
@@ -838,6 +844,8 @@ In this task, you'll deploy a PostgreSQL flexible server using private access (V
 
 #### Congratulations! 
 You deployed a PostgreSQL Flexible Server using private access so the database tier can be modernized to a managed service within the lab VNet.
+
+-->
 
 ===
 
