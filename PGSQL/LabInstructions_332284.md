@@ -1972,9 +1972,9 @@ In this lab you will use Visual Studio Code to create a new project and connect 
 
 ### Additional Resources
 
-[What is the PostgreSQL extension for Visual Studio Code?](https://learn.microsoft.com/en-us/azure/postgresql/developer/vs-code-extension/vs-code-overview)
-[Connect and query a database with the PostgreSQL extension for Visual Studio Code](https://learn.microsoft.com/en-us/azure/postgresql/developer/vs-code-extension/vs-code-connect)
-[Extension home page](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
+- [What is the PostgreSQL extension for Visual Studio Code?](https://learn.microsoft.com/en-us/azure/postgresql/developer/vs-code-extension/vs-code-overview)
+- [Connect and query a database with the PostgreSQL extension for Visual Studio Code](https://learn.microsoft.com/en-us/azure/postgresql/developer/vs-code-extension/vs-code-connect)
+- [Extension home page](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
 
 ===
 
@@ -1984,11 +1984,14 @@ The schema conversion relies on an Azure OpenAI endpoint. This is a prerequisite
 
 ## Task 1: Create a Foundry Resource in Azure
 
-1. [ ] Log in to the Azure Portal +++https://portal.azure.com+++.  The credentials for the Azure account can be found in the resources tab of the lab instructions. !IMAGE[Resources.png](instructions332747/Resources.png)
+1. [ ]Sign into the Lab VM using +++Passw0rd!+++  as the password.
+1. [ ] Launch the browser and log in to the Azure Portal +++https://portal.azure.com+++.  The credentials for the Azure account can be found in the resources tab of the lab instructions. !IMAGE[Resources.png](instructions332747/Resources.png)
 2. [ ] In the portal search bar type +++Foundry+++ and select _Microsoft Foundry_. !IMAGE[Foundry_1.png](instructions332747/Foundry_1.png)
-3. [ ] Select Foundry from the blade on the left under _Use with Foundry_ and click on create.!IMAGE[Foundry_2.png](instructions332747/Foundry_2.png)
+3. [ ] Select Foundry from the blade on the left under _Use with Foundry_ and click on _Create_.!IMAGE[Foundry_2.png](instructions332747/Foundry_2.png)
 4. [ ] Use the existing resourcee group _AZMigrateRG_ and prrovide a name +++OratoPG-@lab.LabInstance.Id+++.  Pick a region with AI capacity such as East US.!IMAGE[Foundry_3.png](instructions332747/Foundry_3.png)
 5. [ ] Go to the _Review + create_ tab aand click on _Create_.  Click on _Go to Resource_ once deployment has completed.!IMAGE[Foundry_4.png](instructions332747/Foundry_4.png).  
+
+===
 
 ## Task 2: Configure the Required OpenAI Endpoint
 
@@ -1998,27 +2001,27 @@ The schema conversion relies on an Azure OpenAI endpoint. This is a prerequisite
 @lab.TextBox(OpenAIEndpoint)
 4. [ ] Copy the API Key and paste it in the text box below for later use.
 @lab.TextBox(OpenAIAPIKey)
-5. [ ] Inthe blade on the left, navigate to _My assets_ -> _Models + endpoints_ and click on _Deploy model_-> _Base model_ .!IMAGE[Foundry_7.png](instructions332747/Foundry_7.png)
+5. [ ] In the blade on the left, navigate to _My assets_ -> _Models + endpoints_ and click on _Deploy model_-> _Base model_ .!IMAGE[Foundry_7.png](instructions332747/Foundry_7.png)
 6. [ ] Select _gpt-4.1_ and click on _Confirm_.!IMAGE[Foundry_8.png](instructions332747/Foundry_8.png) 
-7. [ ] Click on customize to change the TPM value.!IMAGE[Foundry_9.png](instructions332747/Foundry_9.png)
+7. [ ] Click on _Customize_ to change the TPM value.!IMAGE[Foundry_9.png](instructions332747/Foundry_9.png)
 8. [ ] Slide the bar to 1M tokens and click on _Deploy_.!IMAGE[Foundry_10.png](instructions332747/Foundry_10.png)
 
+===
 
-
-# Exercise 03: Convert an Oracle Schema to PostgreSQL Using VS Code PostgreSQL Extension
+# Exercise 02: Convert an Oracle Schema to PostgreSQL Using VS Code PostgreSQL Extension
 
 ## Task 1: Establish VPN Connection
 
 
 1. [ ] Locate the **HV-AutomateClientVPNSconnect.ps1** file on the desktop.!IMAGE[VPN_1.png](instructions332747/VPN_1.png)
-2. [ ] Right select on the file and then select **Run with PowerShell**.
-3. [ ] Wait until you see the prompt to sign in using a web browser. **Copy the code** from the PowerShell window (note your code will be different from what is shown in the image).
+2. [ ] Right click on the file and then select **Run with PowerShell**.
+3. [ ] Wait until you see the prompt to sign in using a web browser. Copy the code from the PowerShell window (note your code will be different from what is shown in the image).
 !IMAGE[VPN_2.png](instructions332747/VPN_2.png)
 4. [ ] Open a new browser tab and connect to +++microsoft.com/devicelogin+++.
-5. [ ] **Paste the code**, and then select **Next**.
-6. [ ] Select **@lab.CloudPortalCredential(User1).Username**, and then select **Continue**.
+5. [ ] Paste the code, and then select _Next_.
+6. [ ] Select **@lab.CloudPortalCredential(User1).Username**, and then select _Continue_.
 7. [ ] Once signed in, close the browser tab and return to the PowerShell window.
-8. [ ] At the Select a subscription prompt, select **Enter** to use the default.
+8. [ ] At the Select a subscription prompt, hit _Enter_ to use the default.
 
 	>[!Note] You can safely minimize the PowerShell window while it connects the VPN.
 
@@ -2026,22 +2029,22 @@ The schema conversion relies on an Azure OpenAI endpoint. This is a prerequisite
 
 ## Task 2: Create Project to Convert the Oracle Schema to PostgreSQL
 
-1. [ ] Go to the Azure Portal +++https://portal.azure.com+++. And locate the Azure PostgreSQL Flexible server server pre-deployed for you in the _AZMigrateRG_ resource group (if it's not there, it might be in the process of deploying).
+1. [ ] Go to the Azure Portal +++https://portal.azure.com+++ and locate the _Azure PostgreSQL Flexible Server_ server pre-deployed for you in the _AZMigrateRG_ resource group (if it's not there, it might be in the process of deploying).
 2. [ ] In he same resource group, locate the private DNS zone and click on it. From the _Overview_ blade, click on _Record set_ links. !IMAGE[DNS_1.png](instructions332747/DNS_1.png)
 3. [ ] Take note of the _A Record_ IP address.!IMAGE[DNS_2.png](instructions332747/DNS_2.png)
 4. [ ] Copy the IP address in the text box below:
 	 @lab.TextBox(FlexIP)
 5. [ ] Open _File  Explorer_ and create an empty folder under _C:_ called +++Oracle_to_PG+++.
 6. [ ] Launch Visual Studio Code from the desktop shortcut.!IMAGE[VScode_1.png](instructions332747/VScode_1.png)
-7. [ ] Go to _File_ -> _Open Folder_ and slect the folder created in step 1.
+7. [ ] Go to _File_ -> _Open Folder_ and select the folder created in step 5. !IMAGE[VScode_2.png](instructions332747/VScode_2.png)
 8. [ ] Click on the PostgreSQL extension on the left hand in VS Code. And click on _Add Connection_.!IMAGE[VScode_4.png](instructions332747/VScode_4.png)
-9. [ ] For _Server Name_ type +++@lab.Variable(FlexIP)+++ (see step 4 if the IP address is not shown). Username should be +++pgadmin+++ and password +++Password~1+++. Enter +++postgres+++ for _database name_. For _connection name_ type +++Oracle to PG Schema+++. !IMAGE[VScode_5.png](instructions332747/VScode_5.png)
-10. [ ] Click on _Test Connection_ then _Save & Close_.
+9. [ ] For _Server Name_ type +++@lab.Variable(FlexIP)+++ (see step 4 if the IP address is not shown). Username should be +++pgadmin+++ and password +++Password~1+++. Enter +++postgres+++ for _database name_. For _connection name_ type +++Oracle to PG Schema+++. 
+10. [ ] Click on _Test Connection_ then _Save & Connect_.!IMAGE[VScode_5.png](instructions332747/VScode_5.png)
 	
     !IMAGE[VScode_6.png](instructions332747/VScode_6.png)
-11. [ ] Click on _Create Migration Project_
-12. [ ] Give the project  name +++Oracle to PostgreSQL Schema Conversion++ aand click on _Next: Oracle Connection_ !IMAGE[VScode_8.png](instructions332747/VScode_8.png)
-13. [ ] Provide he connection information for Oracle.
+11. [ ] Click on _Create Migration Project_. !IMAGE[VScode_7.png](instructions332747/VScode_7.png)
+12. [ ] Give the project a name +++Oracle to PostgreSQL Schema Conversion+++ aand click on _Next: Oracle Connection_ !IMAGE[VScode_8.png](instructions332747/VScode_8.png)
+13. [ ] Provide the connection information for Oracle.
     1. [ ] Hostname :+++localhost++
     2. [ ] Oracle SID +++XE+++
     3. [ ] Oracle username +++c##store+++
@@ -2051,7 +2054,7 @@ The schema conversion relies on an Azure OpenAI endpoint. This is a prerequisite
 16. [ ] Click on _Next:Language Model Configuration_
 17. Configure the OpenAI endpoint to use
     1. [ ] Specify the url to the OpenAI endpoint saved earlier +++@lab.Variable(OpenAIEndpoint)+++
-    2. [ ] Provide the API key saved earlier +++@lab.Variable(OpenAIAPIKey)+++ aand click on _Test OpenAI Connection_!IMAGE[VScode_11.png](instructions332747/VScode_11.png)
+    2. [ ] Provide the API key saved earlier +++@lab.Variable(OpenAIAPIKey)+++ and click on _Test OpenAI Connection_!IMAGE[VScode_11.png](instructions332747/VScode_11.png)
 18. [ ] Click on _Create Migration Project_
 
 ===
@@ -2066,15 +2069,11 @@ The schema conversion relies on an Azure OpenAI endpoint. This is a prerequisite
 === 
 ## Task 4: Review the Conversion Summary
 
-1. [ ] In VS Code review the conversio summary.  You will see information about the percentage of objects converted and ny outstanding tasks for objects that failled or need manual intervention.
+1. [ ] In VS Code review the conversion summary.  You will see information about the percentage of objects converted and any outstanding tasks for objects that failled or need manual intervention.
 
 !IMAGE[VScode_16.png](instructions332747/VScode_16.png)
 
 !IMAGE[VScode_17.png](instructions332747/VScode_17.png)
 
-#### Congratulations! 
+## Congratulations! 
 You completed this exercise and the lab! You successfully used the VS Code PostgreSQL extension to convert an Oracle schema to PostgreSQL.
-
-
-
-
