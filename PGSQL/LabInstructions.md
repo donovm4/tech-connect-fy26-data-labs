@@ -29,7 +29,7 @@ This lab includes the following exercises:
 - **Exercise 00**: Prepare for workload migration with Azure Migrate and discover workloads on Hyper-V host (**25 minutes**)
 - **Exercise 01**: Assess on-prem workload readiness for migration (**45 minutes**)
 - **Exercise 02**: Migrate PostgreSQL to Azure Database for PostgreSQL Flexible Server (**50 minutes**)
-- **Exercise 03**: Migrate Linux middleware/runtime server using Azure Migrate (**75 minutes**)
+- **Exercise 03**: Migrate Linux middleware using Azure Migrate (**75 minutes**)
 - **Exercise 04**: Governance, security, and cost optimization (**30 minutes**)
 
 
@@ -1066,6 +1066,10 @@ In this task, you'll run a validation migration job, review results for errors, 
 >
 > Petroula mentioned Runtime server step is not needed. Will remove once validated in lab testing.
 
+1. [] Next to Use runtime server, select **No**
+
+<!--
+
 1. [] Next to Use runtime server, select **Yes** and then enter the following:
 
     | Object | Value |
@@ -1075,6 +1079,8 @@ In this task, you'll run a validation migration job, review results for errors, 
     | Azure Database for PostgreSQL | **pgsql-flex-@lab.LabInstance.Id.postgres.database.azure.com** |
 
 	>[!Alert] If the Next : Source server > icon appears greyed out. Reselect the three options about and it should become available.
+
+-->
 
 1. [] Select **Next : Source server >**.
 
@@ -1127,6 +1133,14 @@ In this task, you'll run a validation migration job, review results for errors, 
 
 1. [] Select **Next: Runtime server >**
 
+> [!IMPORTANT]
+>
+> Petroula mentioned Runtime server step is not needed. Will remove once validated in lab testing.
+
+1. [] Next to Use runtime server, select **No**
+
+<!--
+
 1. [] Next to Use runtime server, select **Yes** and then enter the following:
 
     | Object | Value |
@@ -1136,6 +1150,8 @@ In this task, you'll run a validation migration job, review results for errors, 
     | Azure Database for PostgreSQL | **pgsql-flex-@lab.LabInstance.Id.postgres.database.azure.com** |
 
 	>[!Alert] If the Next : Source server > icon appears greyed out. Reselect the three options about and it should become available.
+
+-->
 
 1. [] Select **Next : Source server >**.
 
@@ -1239,7 +1255,7 @@ You repointed the application to the migrated database and confirmed the app sti
 
 ===
 
-# Exercise 03: Migrate Linux Middleware/Runtime Server using Azure Migrate
+# Exercise 03: Migrate Linux Middleware using Azure Migrate
 
 ## Introduction
 This exercise applies Azure Migrate Server Migration to move a Hyper-V VM to Azure as an Azure VM (lift-and-shift). You'll prepare the Hyper-V replication environment, install and register the replication provider, configure required Azure-side resources and permissions, replicate the VM, perform a planned migration cutover, and then validate that the migrated workload runs successfully in Azure. The focus is on learning the end-to-end mechanics of VM migration using Azure Migrate and understanding what "complete" looks like after cutover (testing + stopping replication).
