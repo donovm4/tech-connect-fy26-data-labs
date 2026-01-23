@@ -17,16 +17,18 @@ The CTO, **Dennis Nedry**, has initiated an effort to adopt Azure and modernize 
 
 In this lab, you work with:
 - An on-premises-style **Hyper-V host** running Linux virtual machines.
-- An **Azure Migrate project + appliance** used to discover servers and workloads and generate assessments.
+- Two **Azure Migrate projects** used to discover servers and workloads and generate assessments.
 - A **PaaS target** for PostgreSQL using **Azure Database for PostgreSQL Flexible Server** (private access).
 - An **IaaS target** using **Azure VM migration** (Azure Migrate Server Migration).
+<!--
 - Post-migration operations controls (backup, patching, security posture, monitoring, and cost management).
+-->
 
 ## Exercises
 
 This lab includes the following exercises:
 
-- **Exercise 00**: Prepare for workload migration with Azure Migrate and discover workloads on Hyper-V host (**25 minutes**)
+- **Exercise 00**: Prepare for workload migration with Azure Migrate (**25 minutes**)
 - **Exercise 01**: Assess on-prem workload readiness for migration (**45 minutes**)
 - **Exercise 02**: Migrate PostgreSQL to Azure Database for PostgreSQL Flexible Server (**50 minutes**)
 - **Exercise 03**: Migrate Linux middleware using Azure Migrate (**75 minutes**)
@@ -43,20 +45,35 @@ This lab includes the following exercises:
   - Cutover and validation
   - Rollback and operational readiness
 
-# Exercise 00: Prepare for workload migration with Azure Migrate and discover workloads on Hyper-V Host
+# Exercise 00: Prepare for workload migration with Azure Migrate
 
 ## Introduction
-This exercise establishes the Azure Migrate foundation for the lab. You'll create a dedicated Azure Migrate project and register the Azure Migrate appliance that is pre-deployed in the lab environment. With the project and appliance connected, you'll configure discovery against the Hyper-V host and enable guest/workload discovery so Azure Migrate can detect both server inventory and workload-level objects such as the Airsonic web app (Tomcat) and PostgreSQL database. The outputs of this exercise become the source data for later business case creation, assessments, and migrations.
+
+> [!IMPORTANT]
+>
+> Need to modify introduction
+
+This exercise establishes the Azure Migrate foundation for the lab. You'll create dedicated Azure Migrate projects. With the project and appliance connected, you'll configure discovery against the Hyper-V host and enable guest/workload discovery so Azure Migrate can detect both server inventory and workload-level objects such as the Airsonic web app (Tomcat) and PostgreSQL database. The outputs of this exercise become the source data for later business case creation, assessments, and migrations.
 
 ## Description
+
+> [!IMPORTANT]
+>
+> Need to modify description
+
 In this exercise, you'll:
-- Sign in to the Azure portal and create a new Azure Migrate project in the provided subscription and resource group.
+- Sign in to the Azure portal and create two Azure Migrate projects in the provided subscription and resource group.
 - Initiate Hyper-V appliance-based discovery, generate a project key, and register the Azure Migrate appliance using device sign in.
 - Configure discovery credentials for the Hyper-V host and guest workloads (Linux and PostgreSQL).
 - Add the Hyper-V host as a discovery source, validate connectivity, and start discovery so the project begins collecting inventory and workload information.
 
 ## Success criteria
-- A new Azure Migrate project named **Migration-Project-@lab.LabInstance.Id** exists and can be opened successfully.
+
+> [!IMPORTANT]
+>
+> Need to modify success criteria
+
+- 2 Azure Migrate projects named **Migration-Project-@lab.LabInstance.Id** exists and can be opened successfully.
 - The Azure Migrate appliance is registered to the project and shows a successful/healthy registration status.
 - The Hyper-V host discovery source validates successfully and discovery is started.
 - Azure Migrate begins populating discovered inventory with the expected servers and workload objects (including a detected web app and PostgreSQL workload).
@@ -1662,6 +1679,12 @@ You stopped replication to clean up migration state and validated the migrated V
 
 # Exercise 04: Governance, Security and Cost Optimization
 
+> [!IMPORTANT]
+>
+> Removing as this is not needed for this 75 minute session
+
+<!--
+
 ## Exercise introduction
 After migrating the Airsonic application tiers to Azure (Airsonic-Frontend as an Azure VM and the PostgreSQL database on Azure Database for PostgreSQL Flexible Server), you must shift from "migration complete" to "production-ready operations." In this exercise you apply governance and operations controls that organizations typically require before workloads are considered steady-state: backups, patching, security posture management, monitoring dashboards, and cost optimization. You'll also capture a rollback/DR plan to ensure the workload can be recovered quickly if issues arise.
 
@@ -1984,7 +2007,10 @@ Understand spend and optimization opportunities so you can reduce cost and impro
 #### Congratulations! 
 You completed this exercise and the lab! You reviewed resource group costs in **Cost Management** and inspected **Advisor** recommendations to identify practical cost and reliability optimizations for the migrated workload.
 
+-->
+
 ===
+
 # Summary
 
 In this lab you planned and executed a full Azure Migrate workflow for a small Linux application environment and then transitioned the migrated workload into steady-state operations.
