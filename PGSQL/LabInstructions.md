@@ -122,6 +122,8 @@ In this task, you'll create two Azure Migrate projects in the Azure portal. You'
 
 1. [] Select **Yes** if prompted to stay signed in.
 
+1. [] Open another broswer tab and access this link: [Offline Discovery](https://aka.ms/migrate/disconnectedappliancewithappcat)
+
 1. [] In the Azure portal, search for +++Azure Migrate+++ in the search bar and select **Azure Migrate** under **Services**.
 
     ![Azure Migrate is displaed in the Azure Search bar and highlighted in the search results.](instructions312691/17-AzureMigrate.png)
