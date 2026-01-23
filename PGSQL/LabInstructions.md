@@ -137,7 +137,7 @@ In this task, you'll create two Azure Migrate projects in the Azure portal. You'
     | Subscription | **Accept the default** |
     | Resource group | **AZMigrateRG** |
     | Project name | +++Migration-Project-@lab.LabInstance.Id+++ |
-    | Geography | **United States** |
+    | Geography | **Canada** |
 
 1. [] Select **Create**.
 
