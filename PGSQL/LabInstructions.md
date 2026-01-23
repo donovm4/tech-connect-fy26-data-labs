@@ -90,28 +90,22 @@ In this exercise, you'll:
 
 ===
 
-## Task 01: Create two migration projects
-
-> [!IMPORTANT]
->
-> We will need to create 2 separate Azure Migrate projects.
->  1. business case, wave planning
->  2. virtual machine migration
+## Task 01: Create a migration project for offline discovery and assessment
 
 ### Introduction
 Terra Firm Laboratories is ready to turn "we should move to Azure" into an actual plan Dennis can track and defend. An Azure Migrate project becomes the team's home base for discovery, assessment, and migration decisions-so everyone is working from the same inventory and the same assumptions.
 
 ### Description
-In this task, you'll create a new Azure Migrate project in the Azure portal. You'll confirm the project exists and open it, so it is ready for appliance registration and discovery.
+In this task, you'll create two Azure Migrate projects in the Azure portal. You'll confirm the projects exist and open them.
 
 ### Success criteria
-- A new Azure Migrate project named **Migration-Project-@lab.LabInstance.Id** exists in the portal.
-- You can open the project from **Azure Migrate > All projects** and see its Overview page.
+- 2 Azure Migrate projects exist in the portal.
+- You can open the projects from **Azure Migrate > All projects** and see its Overview page.
 
 ### Key tasks
-- Sign in to the Azure portal on the lab VM using the provided lab credentials.
+- Sign in to the Azure portal with the following link for [Offline Discovery](https://aka.ms/migrate/disconnectedappliancewithappcat) on the lab VM using the provided lab credentials.
 - Create a new Azure Migrate project in the **AZMigrateRG** resource group with the specified project name.
-- Open the project from **All projects** and confirm it is accessible.
+- Open the project from **All projects** and confirm they are accessible.
 
 1. [] Sign into the Lab VM using +++Passw0rd!+++ as the password.
 
