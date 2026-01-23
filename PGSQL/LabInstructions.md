@@ -870,15 +870,9 @@ You deployed a PostgreSQL Flexible Server using private access so the database t
 
 -->
 
-
-
 ===
 
 ## Task 02: Connect the Site-to-Site VPN
-
-> [!IMPORTANT]
->
-> Should we consider moving this to [Exercise 00](#exercise-00-prepare-for-workload-migration-with-azure-migrate-and-discover-workloads-on-hyper-v-host)?
 
 ### Introduction
 Terra Firm doesn't want sensitive database traffic exposed, and they prefer private endpoints whenever possible. Establishing VPN connectivity gives the lab environment a secure path into Azure so the team can reach private resources (like the PostgreSQL service) during migration and validation-without punching public holes in the design.
