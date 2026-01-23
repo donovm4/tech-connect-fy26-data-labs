@@ -75,7 +75,7 @@ In this exercise, you'll:
 >
 > Need to modify success criteria
 
-- 2 Azure Migrate projects named **Migration-Project-@lab.LabInstance.Id** exists and can be opened successfully.
+- 2 Azure Migrate projects named **Migration-Project-1** and **Migration-Project-2** (**Migration-Project-@lab.LabInstance.Id**) exists and can be opened successfully.
 - The Azure Migrate appliance is registered to the project and shows a successful/healthy registration status.
 - The Hyper-V host discovery source validates successfully and discovery is started.
 - Azure Migrate begins populating discovered inventory with the expected servers and workload objects (including a detected web app and PostgreSQL workload).
@@ -90,7 +90,7 @@ In this exercise, you'll:
 
 ===
 
-## Task 01: Create a new migration project
+## Task 01: Create two migration projects
 
 > [!IMPORTANT]
 >
