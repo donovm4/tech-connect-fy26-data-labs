@@ -32,7 +32,9 @@ This lab includes the following exercises:
 - **Exercise 01**: Assess on-prem workload readiness for migration (**45 minutes**)
 - **Exercise 02**: Migrate PostgreSQL to Azure Database for PostgreSQL Flexible Server (**50 minutes**)
 - **Exercise 03**: Migrate Linux middleware using Azure Migrate (**75 minutes**)
-- **Exercise 04**: Governance, security, and cost optimization (**30 minutes**)
+<!-- 
+- **Exercise 04**: Governance, security, and cost optimization (**30 minutes**) 
+-->
 
 
 ## Prerequisites
