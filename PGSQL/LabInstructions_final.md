@@ -725,9 +725,11 @@ In this task, you'll run the provided PowerShell script to establish VPN connect
 - The VPN connection remains active for later tasks that require private connectivity.
 
 ### Key tasks
-- Run the VPN automation script from the desktop and start device sign in.
-- Complete authentication in the browser using the provided code.
-- Confirm the script completes and keep the VPN session available for later steps.
+- Run the VPN automation script and confirm the script completes
+- Connect to and modify some Airsonic application data
+- Retrieve the internal IP address of the Flexible PostgreSQL server
+- Migrate the on-premises PostgreSQL Server to Azure Database for PostgreSQL Flexible server
+- Update the web server
 
 ===
 
