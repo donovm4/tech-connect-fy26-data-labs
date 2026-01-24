@@ -1093,6 +1093,10 @@ In this task, you'll start replication for the Airsonic-Frontend VM, apply asses
 - Configure target settings (RG, VNet/subnet, cache storage, availability) and VM compute sizing.
 - Monitor replication jobs until the VM shows **Protected**.
 
+> [!ALERT]
+>
+> You MAY need to ensure that the on-premise Airsonic-Frontend VM has been running for 10 minutes before starting replication.
+
 1. [] In the Azure portal, search for +++Azure Migrate+++ in the search bar and select **Azure Migrate** under **Services**.
 
     ![Azure Migrate is displayed in the Azure Search bar and highlighted in the search results.](instructions312691/17-AzureMigrate.png)
