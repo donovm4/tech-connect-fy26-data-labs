@@ -15,7 +15,7 @@ The CTO, **Dennis Nedry**, has initiated an effort to adopt Azure and modernize 
 In this lab, you work with:
 
 - An on-premises-style **Hyper-V host** running Linux virtual machines.
-- Two **Azure Migrate projects** used to discover servers and workloads and generate assessments.
+- Two **Azure Migrate projects** used to discover servers, workloads and generate assessments and further migrate
 - A **PaaS target** for PostgreSQL using **Azure Database for PostgreSQL Flexible Server** (private access).
 - An **IaaS target** using **Azure VM migration** (Azure Migrate Server Migration).
 
@@ -46,7 +46,7 @@ This lab includes the following exercises:
 
 This exercise establishes the Azure Migrate foundation for the lab. You'll create two dedicated Azure Migrate projects:
 
-- You'll configure discovery for one project based on output from a Offline Discovery Appliance host so that Azure Migrate can detect both server inventory and workload-level objects. The discovered data from this import becomes the source data for a later business case and assessment.
+- You'll configure discovery in one project based on output from a Offline Discovery so that Azure Migrate can detect both server inventory and workload-level objects. The discovered data from this import becomes the source data for a later business case and assessment.
 - The second project will focus on the agent-based migration of an on-premises application-tier virtual machine to Azure.
 
 ## Description
@@ -60,7 +60,7 @@ In this exercise, you'll:
 ## Success criteria
 
 - 2 Azure Migrate projects exist and can be opened successfully.
-- The Hyper-V begins to register to the project and is on it's way to showing a successful/healthy registration status.
+- The Hyper-V server begins to register to the project and is on it's way to showing a successful/healthy registration status
 - Azure Migrate begins to populate discovered inventory with the expected servers and workload objects.
 
 ## Key tasks
@@ -118,7 +118,7 @@ In this task, you'll create two Azure Migrate projects in the Azure portal. You'
     | -------- | -------- |
     | Subscription | **Accept the default** |
     | Resource group | **AZMigrateRG** |
-    | Project name | +++Offline-Migration-Project-@lab.LabInstance.Id+++ |
+    | Project | +++Offline-Migration-Project-@lab.LabInstance.Id+++ |
     | Region | **Canada Central** |
 
 1. [] Select **Create**.
@@ -129,7 +129,7 @@ In this task, you'll create two Azure Migrate projects in the Azure portal. You'
 
 #### Congratulations!
 
-You created an Azure Migrate project that will store discovery, assessment, and migration metadata for the rest of the lab, and then confirmed you can open it successfully.
+You created an Azure Migrate project that will store discovery and assessment metadata for the rest of the lab, and then confirmed you can open it successfully.
 
 ===
 
@@ -144,7 +144,7 @@ You created an Azure Migrate project that will store discovery, assessment, and 
 
 1. [] Select **Disconnected appliance (ZIP)** in the file type dropdown 
 2. [] Click **Browse** and select the ZIP file that has already been exported for you located in `C:/LabFiles`. 
-3. [] Once you have selected the right file, click on import.  
+3. [] Once you have selected the right file, click on **import**.  
 4. [] You will be able to see the import status as it proceeds.  
 
 > [!ALERT]
@@ -182,6 +182,10 @@ You created an Azure Migrate project that will store discovery, assessment, and 
 1. [] Select **Create**.
 
 1. [] After project creation completes, select **All projects** on the left menu, and then select the **Migration-Project-@lab.LabInstance.Id** project.
+
+---
+#### Congratulations!
+You created an Azure Migrate project that will be used to migrate a VM for the rest of the lab, and then confirmed you can open it successfully.
 
 ===
 
@@ -247,7 +251,7 @@ You created an Azure Migrate project that will store discovery, assessment, and 
 
 1. [] Select **Register** and on the **Vault Settings...** screen, select **Browse**
 
-1. [] On the left menu, select the **Downloads** folder and then select the **Migration-Project-@lab.LabInstance.Id.Location-MigrateVault-@lab.LabInstance.Id_Migration-Project-@lab.LabInstance.Id-HyperVSite_xxxxxxx.VaultCredentials** file.
+1. [] On the left menu, select the **Downloads** folder and then select the **Migration-Project-@lab.LabInstance.Id-MigrateVault-@lab.LabInstance.Id_Migration-Project-@lab.LabInstance.Id-HyperVSite_xxxxxxx.VaultCredentials** file.
 
 1. [] Select **Open**.
    
@@ -335,7 +339,7 @@ In this task, you'll build a business case scoped to the environment and confirm
 
     ![Azure Migrate is displaed in the Azure Search bar and highlighted in the search results.](instructions312691/17-AzureMigrate.png)
 
-1. [] On the **Azure Migrate Project** blade in the Azure portal, expand the **Decide and Plan** in the left menu, then select **Business cases**.
+1. [] On the **Azure Migrate Project** blade in the offline Azure portal, expand the **Decide and Plan** in the left menu, then select **Business cases**. Further select **Build business case** in the main page
 
 1. [] Enter +++bc-@lab.LabInstance.Id+++ for the Business case name, then select **Entire datacenter**.
 
@@ -438,7 +442,7 @@ You're grouping the Airsonic Frontend + Backend + discovered workloads (Tomcat +
 
 1. [] Select **Review and Create**, and then select **Create**.
 
-	>[!Note] Select **Refresh** until you see that the application has been created.
+	>[!Note] **Refresh** your browser tab until you see that the application has been created.
 
 #### Congratulations! 
 You grouped the Airsonic stack into a single application, including its servers and discovered workloads, so it can be assessed and planned as a unit.
@@ -876,7 +880,7 @@ In this task, you'll run a validation migration job, review results for errors, 
 
 1. [] Select **Go to target server**.
 
-1. [] On the pgsql-flex-@lab.LabInstance.Id | Migration page, select **+ Create**.
+1. [] On the pgflex@lab.LabInstance.Id | Migration page, select **+ Create**.
 
 1. [] On the **Setup** tab, enter the following values:
 
@@ -1153,6 +1157,11 @@ In this task, you'll start replication for the Airsonic-Frontend VM, apply asses
     | Azure VM Size | +++Standard_D2s_v4 (2 Cores, 8 GB RAM)+++ |
     | OS Type | **Linux** |
     | Operating System | **Red Hat Enterprise Linux 9** |
+    | Availability Zone | **None** |
+
+> [!ALERT]
+>
+> Below image needs to be updated!
 
 	!IMAGE[nodv297u.jpg](instructions332284/nodv297u.jpg)
 
