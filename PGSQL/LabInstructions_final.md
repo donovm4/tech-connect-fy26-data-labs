@@ -83,7 +83,7 @@ In this task, you'll create two Azure Migrate projects in the Azure portal. You'
 - You can open the projects from **Azure Migrate > All projects** and see its Overview page.
 
 ### Key tasks
-- Sign in to the Azure portal with the following link for [Offline Discovery](https://aka.ms/migrate/disconnectedappliancewithappcat) on the lab VM using the provided lab credentials.
+- Sign in to the Azure portal with the specified link for the **Offline Discovery** on the lab VM using the provided lab credentials.
 - Create a new Azure Migrate project in the **AZMigrateRG** resource group with the specified project name.
 - Open the project from **All projects** and confirm they are accessible.
 
@@ -102,7 +102,7 @@ In this task, you'll create two Azure Migrate projects in the Azure portal. You'
 
 1. [] Select **Yes** if prompted to stay signed in.
 
-1. [] Open another broswer tab and access this link: [Offline Discovery](https://aka.ms/migrate/disconnectedappliancewithappcat)
+1. [] Open another broswer tab and access this link: +++https://aka.ms/migrate/disconnectedappliancewithappcat+++
 
 1. [] In the portal, search for +++Azure Migrate+++ in the search bar and select **Azure Migrate** under **Services**.
 
@@ -119,7 +119,7 @@ In this task, you'll create two Azure Migrate projects in the Azure portal. You'
     | Subscription | **Accept the default** |
     | Resource group | **AZMigrateRG** |
     | Project name | +++Offline-Migration-Project-@lab.LabInstance.Id+++ |
-    | Geography | **Canada** |
+    | Region | **Canada Central** |
 
 1. [] Select **Create**.
 
