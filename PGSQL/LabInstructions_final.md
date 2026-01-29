@@ -24,7 +24,7 @@ In this lab, you work with:
 This lab includes the following exercises:
 
 - **Exercise 01**: Prepare for workload migration with Azure Migrate 
-- **Exercise 02**: Assess on-prem workload readiness for migration 
+- **Exercise 02**: Define the Application and create a Business Case 
 - **Exercise 03**: Migrate PostgreSQL to Azure Database for PostgreSQL Flexible Server 
 - **Exercise 04**: Migrate Linux middleware using Azure Migrate
 
@@ -135,15 +135,15 @@ You created an Azure Migrate project that will store discovery and assessment me
 
 ## Task 02: Import offline discovery file
 
-1. [] 1. Once the project is created, click on "Start discovery" on the project overview page.  
+1. [] 1. Once the project is created, click on **Start discovery** on the project overview page.  
  
  
-2. [] Select the "Using custom import" option from the dropdown.  
+2. [] Select the **Using custom import** option from the dropdown.  
  
 ### Import the ZIP File generated using Disconnected appliance 
 
 1. [] Select **Disconnected appliance (ZIP)** in the file type dropdown 
-2. [] Click **Browse** and select the ZIP file that has already been exported for you located in `C:/LabFiles`. 
+2. [] Click **Browse** and select the **CollectorV1** ZIP file that has already been exported for you located in `C:/LabFiles`. 
 3. [] Once you have selected the right file, click on **import**.  
 4. [] You will be able to see the import status as it proceeds.  
 
@@ -153,7 +153,7 @@ You created an Azure Migrate project that will store discovery and assessment me
 
 > [!ALERT]
 >
-> The discovery process may take up to 45 minutes. 
+> The discovery process may take up to 45 minutes with large import files. 
 
 ===
 
@@ -173,11 +173,15 @@ You created an Azure Migrate project that will store discovery and assessment me
 1. [] On the **Create Project** blade, enter the following:
 	
     | Object | Value |
-    | -------- | -------- |
+    | ------ | ----- |
     | Subscription | **Accept the default** |
     | Resource group | **AZMigrateRG** |
     | Project name | +++Migration-Project-@lab.LabInstance.Id+++ |
     | Geography | **United States** |
+
+    > [!ALERT]
+    >
+    > The geography MUST align with the region of your resource group's location. For example, if the region of your resource group is Central US and the chosen geography should be United States.
 
 1. [] Select **Create**.
 
@@ -241,7 +245,7 @@ You created an Azure Migrate project that will be used to migrate a VM for the r
 
     ![The Download link and button are highlighted and numbers 1 and 2 under Prepare Hyper-V host servers.](instructions312691/44-Download.png)
 
-    >[!Alert] The files MUST be downloaded on the HyperV host, not the Migrate01 VM.
+    >[!Alert] The files MUST be downloaded on the HyperV host (Server1), not the Migrate01 VM.
 
 1. [] In the downloads dropdown, hover over **AzureSiteRecoveryProvider.exe**, and the select **Open file**.
 
@@ -285,7 +289,7 @@ You created an Azure Migrate project that will be used to migrate a VM for the r
 
 ===
 
-# Exercise 02: Business Case and Assessment
+# Exercise 02 : Define the Application and create a Business Case
 
 ## Introduction
 
@@ -295,110 +299,48 @@ This exercise turns discovery data into actionable migration planning outputs. Y
 
 In this exercise, you'll:
 
+- Define an application for a stack by linking the frontend and backend servers and their discovered workloads.
 - Build a business case scoped to the lab environment and review its outputs (scope, cost comparison, savings, and strategy summaries).
 - Explore discovered inventory to confirm servers and workloads were detected.
-- Define an application for a stack by linking the frontend and backend servers and their discovered workloads.
 - Review the assessment created by the business case and compare modernization options (PaaS preferred, PaaS only, lift-and-shift to Azure VMs).
 - Create a wave plan from the recommended path, add tasks, review selected applications/workloads, and inspect target settings and migration options.
 - Optionally document a planning-only identity mapping strategy from FreeIPA to Microsoft Entra ID, including admins, users, and service identities.
 
 ## Success criteria
+
+- An application named **airsonic-app-@lab.LabInstance.Id** exists and includes the linked servers and discovered workloads.
 - A business case named **bc-@lab.LabInstance.Id** exists and reflects the expected scope (workloads/web apps/databases).
 - The assessment **businesscase-bc-@lab.LabInstance.Id** is accessible, shows the expected workload count, and provides clear path comparisons across PaaS and IaaS options.
-- An application named **airsonic-app-@lab.LabInstance.Id** exists and includes the linked servers and discovered workloads.
 - A wave plan named **wave-@lab.LabInstance.Id** exists and includes the Airsonic application and expected workloads, with tasks and target settings reviewed.
 - A FreeIPA-to-Entra identity mapping table is completed with at least six entries covering admin, user, and service identities.
 
 ## Key tasks
-- Generate a business case and interpret its cost/savings outputs while validating the scope matches discovered inventory.
+
 - Create an application definition for the Airsonic stack so planning reflects an application boundary rather than individual servers.
+- Generate a business case and interpret its cost/savings outputs while validating the scope matches discovered inventory.
 - Use the assessment to compare PaaS vs IaaS paths and identify recommended targets for the web app and PostgreSQL database.
 - Create a wave plan from the recommended path, add migration tasks, and review workload selection and target settings.
 - Document a practical identity mapping strategy from FreeIPA to Entra ID to support post-migration administration and access control.
 
 ===
 
-## Task 01: Build a Business case and Assessment
+## Task 01: Define an application for the Airsonic stack
 
 ### Introduction
-Dennis needs a lot more to get Terra Firm's cloud initiative funded - he needs a story backed by numbers. The business case turns discovered inventory into a cost-and-savings view, helping Terra Firm evaluate things like Azure Hybrid Benefit, operational savings, and what "moving efficiently" could actually look like.
 
-### Description
-In this task, you'll build a business case scoped to the environment and confirm it begins generating. While it runs, you'll explore the discovered inventory and validate that key workloads have been discovered.
-
-### Success criteria
-- A business case named **bc-@lab.LabInstance.Id** is created and visible under **Decide and Plan > Business cases**.
-- Discovered inventory is visible in the project and includes the expected servers and workloads.
-
-### Key tasks
-- Start **Build business case** using the specified settings (target location, modernization preference, pricing assumptions).
-- Open **Explore inventory** and validate discovered servers and discovered workloads (web app + database).
-- Drill into at least one database workload and one web app workload to review details.
-
-1. [] In the Azure portal, search for +++Azure Migrate+++ in the search bar and select **Azure Migrate**, under **Services**.
-
-    ![Azure Migrate is displaed in the Azure Search bar and highlighted in the search results.](instructions312691/17-AzureMigrate.png)
-
-1. [] On the **Azure Migrate Project** blade in the offline Azure portal, expand the **Decide and Plan** in the left menu, then select **Business cases**. Further select **Build business case** in the main page
-
-1. [] Enter +++bc-@lab.LabInstance.Id+++ for the Business case name, then select **Entire datacenter**.
-
-	!IMAGE[k6lmul2t.jpg](instructions332284/k6lmul2t.jpg)
-
-1. [] On the **Build business case (Preview)** page, enter the following:
-
-    | Object | Value |
-    | -------- | -------- |
-    | Target location | **@lab.CloudResourceGroup(AZMigrateRG).Location**| 
-    | Migration preference | **Modernize**| 
-    | Migration preference | **Reserved Instance**| 
-    | Discount (%) on Pay as you go | **0**| 
-    | Currency | **US Dollar ($)**| 
-
-1. [] Select **Build business case**.
-
-	>[!Note] The business case will take approximately 10 minutes to generate. You can continue with the lab while it is generating.
-
-	>[!Note] Building a business case automatically creates an assessment as well. You'll evaluate both when the generation is complete.
-
-## Explore the discovered inventory
-
-1. [] On the Azure Migrate blade, select **All projects**, and then select the **Migration-Project-@lab.LabInstance.Id** project.
-
-1. [] On the left navigation menu, expand **Explore Inventory**.
-
-1. [] Select **All inventory** and then observe the discovered objects.
-
-    !IMAGE[qlk59gmg.jpg](instructions332284/qlk59gmg.jpg)
-
-1. [] Select the **>** next to **Airsonic-Backend** to display the discovered workloads.
-
-1. [] Select **Databases**, and then select the **airsonic-backend** DB instance to observe the details.
-
-1. [] Select **Close** to return to the previous screen.
-
-1. [] Select **Web apps** and then select the **airsonic** Web app to observe the details.
-
-1. [] Select the **X** in the top right side of the screen, to return to the previous screen.
-
-#### Congratulations! 
-You initiated a business case for the environment and verified the discovered inventory contains the expected servers and workload objects used for planning.
-
-===
-
-## Task 02: Define an application for the Airsonic stack
-
-### Introduction
 Terra Firm isn't migrating "random servers" - they're migrating a workload that users rely on, with tiers that rise and fall together. Defining the application lets Dennis's team treat the pilot as a single unit (web/app/database), making it easier to plan dependencies, choose a target approach, and avoid migrating pieces out of order.
 
 ### Description
+
 In this task, you'll create an application definition for the Airsonic stack by linking the frontend and backend servers and their discovered workloads (Tomcat web app and PostgreSQL database). You'll also set basic app properties such as business criticality and complexity.
 
 ### Success criteria
+
 - An application named **airsonic-app-@lab.LabInstance.Id** exists in **Explore applications > Applications**.
 - The application includes the linked Airsonic servers and their discovered workloads.
 
 ### Key tasks
+
 - Create a new **Custom** application definition from **Explore applications > Applications**.
 - Link the Airsonic frontend and backend servers (ensuring workloads are included).
 - Set business criticality/complexity values and create the application.
@@ -449,6 +391,74 @@ You grouped the Airsonic stack into a single application, including its servers 
 
 ===
 
+## Task 02: Build a Business case and Assessment
+
+### Introduction
+Dennis needs a lot more to get Terra Firm's cloud initiative funded - he needs a story backed by numbers. The business case turns discovered inventory into a cost-and-savings view, helping Terra Firm evaluate things like Azure Hybrid Benefit, operational savings, and what "moving efficiently" could actually look like.
+
+### Description
+In this task, you'll build a business case scoped to the environment and confirm it begins generating. While it runs, you'll explore the discovered inventory and validate that key workloads have been discovered.
+
+### Success criteria
+- A business case named **bc-@lab.LabInstance.Id** is created and visible under **Decide and Plan > Business cases**.
+- Discovered inventory is visible in the project and includes the expected servers and workloads.
+
+### Key tasks
+- Start **Build business case** using the specified settings (target location, modernization preference, pricing assumptions).
+- Open **Explore inventory** and validate discovered servers and discovered workloads (web app + database).
+- Drill into at least one database workload and one web app workload to review details.
+
+1. [] In the Azure portal, search for +++Azure Migrate+++ in the search bar and select **Azure Migrate**, under **Services**.
+
+    ![Azure Migrate is displaed in the Azure Search bar and highlighted in the search results.](instructions312691/17-AzureMigrate.png)
+
+1. [] On the **Azure Migrate Project** blade in the Azure portal, open the +++Offline-Migration-Project-@lab.LabInstance.Id+++. Expand the **Decide and Plan** in the left menu, then select **Business cases**. Further select **Build business case** in the main page
+
+1. [] Enter +++bc-@lab.LabInstance.Id+++ for the Business case name, then select **Entire datacenter**.
+
+	!IMAGE[k6lmul2t.jpg](instructions332284/k6lmul2t.jpg)
+
+1. [] On the **Build business case (Preview)** page, enter the following:
+
+    | Object | Value |
+    | -------- | -------- |
+    | Target location | **@lab.CloudResourceGroup(AZMigrateRG).Location**| 
+    | Migration preference | **Modernize**| 
+    | Migration preference | **Reserved Instance**| 
+    | Discount (%) on Pay as you go | **0**| 
+    | Currency | **US Dollar ($)**| 
+
+1. [] Select **Build business case**.
+
+	>[!Note] The business case will take approximately 10 minutes to generate. You can continue with the lab while it is generating.
+
+	>[!Note] Building a business case automatically creates an assessment as well. You'll evaluate both when the generation is complete.
+
+## Explore the discovered inventory
+
+1. [] On the Azure Migrate blade, select **All projects**, and then select the **Migration-Project-@lab.LabInstance.Id** project.
+
+1. [] On the left navigation menu, expand **Explore Inventory**.
+
+1. [] Select **All inventory** and then observe the discovered objects.
+
+	!IMAGE[all-inventory.png](instructions332747/all-inventory.png)
+
+1. [] Select the **>** next to **Airsonic-Backend** to display the discovered workloads.
+
+1. [] Select **Databases**, and then select the **airsonic-backend** DB instance to observe the details.
+
+1. [] Select **Close** to return to the previous screen.
+
+1. [] Select **Web apps** and then select the **airsonic** Web app to observe the details.
+
+1. [] Select the **X** in the top right side of the screen, to return to the previous screen.
+
+#### Congratulations! 
+You initiated a business case for the environment and verified the discovered inventory contains the expected servers and workload objects used for planning.
+
+===
+
 ## Task 03: Review the Business Case outputs (scope, savings, and data quality)
 
 ### Introduction
@@ -480,17 +490,24 @@ In this task, you'll open the generated business case and review key outputs inc
     
     !IMAGE[upkfkq7n.jpg](instructions332284/upkfkq7n.jpg)
 
+    > [!NOTE]
+    >
+    > Your calculations MAY vary.
+
 1. [] On the **Overview** page, observe the **YOY current vs future state costs**:
 
 	!IMAGE[3gim64n3.jpg](instructions332284/3gim64n3.jpg)
 
-1. [] Under **Scoped items**, verify that:
- 
-    - Workloads = **4**
-    - WebApps = **1**
+1. [] Under **Scoped items**, verify that there is:
+
+	- Custom Applications = **1**
+     
+      > [!NOTE] Includes 4 workloads
+    
+    - Infrastructure = **2**
     - Database = **1**
 
-	!IMAGE[cswnbno4.jpg](instructions332284/cswnbno4.jpg)
+	!IMAGE[scoped-items.png](instructions332747/scoped-items.png)
 
 1. [] On the left menu under **Business Case Reports**, select **Current on-premises vs future**.
 
@@ -854,100 +871,15 @@ In this task, you'll run a validation migration job, review results for errors, 
 - The migration job completes with status **Succeeded** for the Airsonic database.
 
 ### Key tasks
-- Create and run a **Validate** migration job using the Migration Service for PostgreSQL.
-- Review validation output for errors/warnings and confirm readiness.
-- Create and run a **Validate and migrate** offline migration job and monitor status to completion.
+- Create and run a **Validate and migrate** offline migration job using the Migration Service for PostgreSQL
+- Review validation output for errors/warnings and confirm readiness
+- Monitor the validation and migration statuses to completion
 
+## Setup the validation and migration job
 
-## Validate the database migration
+1. [] On the pgsql-flex-@lab.LabInstance.Id resource, find the **Migration** blade in the left menu.
 
-1. [] In the Azure portal search bar, search for and then select +++Azure Database Migration Services+++.
-
-1. [] On the **Azure Database Migration Services** page, select **Start a new migration**.
-
-	!IMAGE[6o7i9gdk.jpg](instructions332284/6o7i9gdk.jpg)
-
-1. [] On the **Select migration scenario and Database Migration Service** page, enter the following:
-
-    | Object | Value |
-    | -------- | -------- |
-    | Source server type | **PostgreSQL** |
-    | Target server type | **Azure Database for PostgreSQL** |
-    | Database Migration Service | **Migration Service for Azure Database for PostgreSQL** |
-    | Subscription | **@lab.CloudSubscription.Name** |
-    | Resource Group | **@lab.CloudResourceGroup(AZMigrateRG).Name** |
-    | Azure Database for PostgreSQL | **pgsql-flex-@lab.LabInstance.Id** |
-
-1. [] Select **Go to target server**.
-
-1. [] On the pgflex@lab.LabInstance.Id | Migration page, select **+ Create**.
-
-1. [] On the **Setup** tab, enter the following values:
-
-    | Object | Value |
-    | -------- | -------- |
-    | Migration name | +++airsonic-db-validation+++ |
-    | Source server type | **On-premises server** |
-    | Migration option | **Validate** |
-    | Migration mode | **Offline** |
-
-1. [] Select **Next: Runtime server >**
-
-1. [] Next to Use runtime server, select **No**
-
-<!--
-
-1. [] Next to Use runtime server, select **Yes** and then enter the following:
-
-    | Object | Value |
-    | -------- | -------- |
-    | Subscription | **@lab.CloudSubscription.Name** |
-    | Resource Group | **@lab.CloudResourceGroup(AZMigrateRG).Name** |
-    | Azure Database for PostgreSQL | **pgsql-flex-@lab.LabInstance.Id.postgres.database.azure.com** |
-
-	>[!Alert] If the Next : Source server > icon appears greyed out. Reselect the three options about and it should become available.
-
--->
-
-1. [] Select **Next : Source server >**.
-
-1. [] On the **Source server** tab, enter the following values:
-
-    | Object | Value |
-    | -------- | -------- |
-    | Server name | +++192.168.1.165+++ |
-    | Port | +++5432+++ |
-    | Administrator login | +++admin+++ 
-    | Password | +++Password~1+++ |
-    | SSL mode | **Prefer** |
-
-1. [] Select **Connect to source** and confirm the connection.
-    
-1. [] Select **Next: Target server >**.
-
-1. [] On the Target server tab, in the Password field, enter +++Password~1+++, and then select **Connect to target**.
-
-1. [] Wait for the **Connection successful** message, and then select **Next: Databases to validate or migrate >**.
-
-1. [] On the **Databases to validate and migrate** tab, select **airsonic**, and choose **Next: Summary >**.
-
-1. [] On the **Summary** tab, review the configuration and select **Start validation**.
-
-	>[!Note] It will take several minutes to complete the validation. You can periodically refresh the page until the Status displays **Succeeded**.
-
-1. [] Once the validation is complete, select the **airsonic-db-validation** job.
-
-1. [] Inspect the results of the validation and confirm that there are no errors.
-
-1. [] Scroll to the bottom and select the **airsonic** database.
-
-1. [] Inspect the flyout page for any errors, and then select the **X** in the top right to close the flyout.
-
-1. [] Select the **X** in the top right corner to close the validation results page.
-
-## Migrate the database
-
-1. [] On the pgsql-flex-@lab.LabInstance.Id | Migration page, select **+ Create**.
+1. [ ] On the pgsql-flex-@lab.LabInstance.Id | Migration page, select **+ Create**.
 
 1. [] On the **Setup** tab, enter the following values:
 
@@ -960,23 +892,7 @@ In this task, you'll run a validation migration job, review results for errors, 
 
 1. [] Select **Next: Runtime server >**
 
-1. [] Next to Use runtime server, select **No**
-
-<!--
-
-1. [] Next to Use runtime server, select **Yes** and then enter the following:
-
-    | Object | Value |
-    | -------- | -------- |
-    | Subscription | **@lab.CloudSubscription.Name** |
-    | Resource Group | **@lab.CloudResourceGroup(AZMigrateRG).Name** |
-    | Azure Database for PostgreSQL | **pgsql-flex-@lab.LabInstance.Id.postgres.database.azure.com** |
-
-	>[!Alert] If the Next : Source server > icon appears greyed out. Reselect the three options about and it should become available.
-
--->
-
-1. [] Select **Next : Source server >**.
+1. [] Next to **Use runtime server** and select **No**, then select **Next : Source server >**
 
 1. [] On the **Source server** tab, enter the following values:
 
@@ -988,9 +904,7 @@ In this task, you'll run a validation migration job, review results for errors, 
     | Password | +++Password~1+++ |
     | SSL mode | **Prefer** |
 
-1. [] Select **Connect to source** and confirm the connection.
-    
-1. [] Select **Next: Target server >**.
+1. [] Select **Connect to source** and confirm the connection, then select **Next: Target server >**.
 
 1. [] On the Target server tab, in the Password field, enter +++Password~1+++, and then select **Connect to target**.
 
@@ -1002,7 +916,7 @@ In this task, you'll run a validation migration job, review results for errors, 
 
 1. [] Monitor the progress of the migration on the **Migration** page.
 
-	>[!Note] The migration should take approximately 5 minutes. The migration is complete when the status displays **Succeeded**. You can periodically **refresh** to update the status.
+	>[!Note] The validation and migration should take approximately 8-10 minutes. The operation is complete when the status displays **Succeeded**. You can periodically **refresh** to update the status.
 
     !IMAGE[sftftznj.jpg](instructions332284/sftftznj.jpg)
 
@@ -1074,11 +988,12 @@ In this task, you'll update the Airsonic configuration to point to the migrated 
 1. [] Close the airsonic browser tab.
 
 #### Congratulations! 
+
 You repointed the application to the migrated database and confirmed the app still works and retains expected data, validating a successful cutover.
 
 ===
 
-## Exercise 04: Replicate and Migrate Airsonic-Frontend
+# Exercise 04: Replicate and Migrate Airsonic-Frontend
 
 ## Task 01: Replicate the RHEL VM (Airsonic-Frontend)
 
@@ -1099,7 +1014,7 @@ In this task, you'll start replication for the Airsonic-Frontend VM, apply asses
 
 > [!ALERT]
 >
-> You MAY need to ensure that the on-premise Airsonic-Frontend VM has been running for 10 minutes before starting replication.
+> You MUST ensure that the on-premise Airsonic-Frontend VM has been running for 10 minutes _before_ starting replication. You check the runtime from the Hyper-V Manager application on the HyperV host.
 
 1. [] In the Azure portal, search for +++Azure Migrate+++ in the search bar and select **Azure Migrate** under **Services**.
 
@@ -1127,9 +1042,7 @@ In this task, you'll start replication for the Airsonic-Frontend VM, apply asses
 
 1. [] Target VM security type: Choose **Standard or Trusted Launch Virtual machines**.
 
-1. []  Import migration settings from an assessment: select **Yes, apply migration settings from an Azure Migrate assessment**.
-
-1. []  Select assessment: Select the **businesscase-bc--@lab.LabInstance.Id** you created earlier.
+1. []  Import migration settings from an assessment: select **No, I’ll specify the migration settings manually**.
 
 1. []  Check the box next to **Airsonic-Frontend**.
 
@@ -1140,13 +1053,15 @@ In this task, you'll start replication for the Airsonic-Frontend VM, apply asses
     | Object | Value |
     | -------- | -------- |
     | Resource group | **AZMigrateRG** |
-    | Register with SQL IaaS extension | **Uncheck**
+    | Register with SQL IaaS extension | **Uncheck** |
+    | I have a Windows Server license | **Uncheck** |
     | I have an Enterprise Linux license | **Check** |
     | I confirm I have an eligible Enterprise Linux subscription to apply this Azure Hybrid Benefit | **Check** |
-    | Cache storage account | **sa@lab.LabInstance.Id** |
+    | Cache storage account | **Auto-create (default)** |
     | Virtual network | **migrate@lab.LabInstance.Id** |
     | Subnet | **default** |
     | Availability options | **No infrastructure redundancy required** |
+    | Enable secure boot | **Uncheck** |
 
 1. [] Select **Next**.
 
@@ -1157,19 +1072,18 @@ In this task, you'll start replication for the Airsonic-Frontend VM, apply asses
     | Azure VM Size | +++Standard_D2s_v4 (2 Cores, 8 GB RAM)+++ |
     | OS Type | **Linux** |
     | Operating System | **Red Hat Enterprise Linux 9** |
-    | Availability Zone | **None** |
 
-> [!ALERT]
->
-> Below image needs to be updated!
-
-	!IMAGE[nodv297u.jpg](instructions332284/nodv297u.jpg)
+	!IMAGE[replicate-vm.png](instructions332747/replicate-vm.png)
 
 1. [] Select **Next**.
 
 1. [] On the **Disks** page, select **Next**.
 
 1. [] On the **Tags** page, select **Next**.
+
+> [!ALERT]
+>
+> Again, you MUST ensure that the on-premise Airsonic-Frontend VM has been running for 10 minutes _before_ starting replication. You check the runtime from the Hyper-V Manager application on the HyperV host.
 
 1. [] On the **Review + Start replication** page, select **Replicate**.
 
