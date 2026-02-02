@@ -1,0 +1,234 @@
+{
+    "value": [
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/AZMigrateRG/providers/Microsoft.Network/publicIPAddresses/public-ip-58779143",
+            "name": "public-ip-58779143",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "sku": {
+                "name": "Standard"
+            },
+            "location": "centralus"
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/AZMigrateRG/providers/Microsoft.Network/networkSecurityGroups/nsg-58779143",
+            "name": "nsg-58779143",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "location": "centralus"
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/AZMigrateRG/providers/Microsoft.Network/publicIPAddresses/gw-public-ip-58779143",
+            "name": "gw-public-ip-58779143",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "sku": {
+                "name": "Standard"
+            },
+            "location": "centralus"
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/AZMigrateRG/providers/Microsoft.Network/localNetworkGateways/lng-onprem-58779143",
+            "name": "lng-onprem-58779143",
+            "type": "Microsoft.Network/localNetworkGateways",
+            "location": "centralus"
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/AZMigrateRG/providers/Microsoft.Network/privateDnsZones/privatelink.postgres.database.azure.com",
+            "name": "privatelink.postgres.database.azure.com",
+            "type": "Microsoft.Network/privateDnsZones",
+            "location": "global"
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/AZMigrateRG/providers/Microsoft.Network/virtualNetworks/migrate58779143",
+            "name": "migrate58779143",
+            "type": "Microsoft.Network/virtualNetworks",
+            "location": "centralus"
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_centralus",
+            "name": "NetworkWatcher_centralus",
+            "type": "Microsoft.Network/networkWatchers",
+            "location": "centralus"
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/AZMigrateRG/providers/Microsoft.Network/virtualNetworkGateways/vnet-gw-58779143",
+            "name": "vnet-gw-58779143",
+            "type": "Microsoft.Network/virtualNetworkGateways",
+            "location": "centralus"
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/AZMigrateRG/providers/Microsoft.Network/privateDnsZones/privatelink.postgres.database.azure.com/virtualNetworkLinks/lnk-migrate58779143",
+            "name": "privatelink.postgres.database.azure.com/lnk-migrate58779143",
+            "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+            "location": "global"
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/AZMigrateRG/providers/Microsoft.Migrate/migrateprojects/Offline-Migration-Project-58779143",
+            "name": "Offline-Migration-Project-58779143",
+            "type": "Microsoft.Migrate/migrateprojects",
+            "location": "canadacentral",
+            "identity": {
+                "principalId": "64492beb-e7ed-4121-8f6a-da75f127760f",
+                "tenantId": "4cfe372a-37a4-44f8-91b2-5faf34253c62",
+                "type": "SystemAssigned"
+            },
+            "tags": {
+                "Migrate Project": "Offline-Migration-Project-58779143"
+            }
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/azmigraterg/providers/Microsoft.Migrate/assessmentProjects/Offline-Migration-Project-5877914368b7project",
+            "name": "Offline-Migration-Project-5877914368b7project",
+            "type": "Microsoft.Migrate/assessmentProjects",
+            "kind": "Migrate",
+            "location": "canadacentral"
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/azmigraterg/providers/microsoft.offazure/VMwareSites/offlinecollector7880site",
+            "name": "offlinecollector7880site",
+            "type": "microsoft.offazure/VMwareSites",
+            "kind": "Migrate",
+            "location": "canadacentral",
+            "tags": {
+                "Migrate Project": "Offline-Migration-Project-58779143"
+            }
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/azmigraterg/providers/microsoft.applicationmigration/PGSQLSites/Offline-Migrat0590pgsql",
+            "name": "Offline-Migrat0590pgsql",
+            "type": "microsoft.applicationmigration/PGSQLSites",
+            "location": "canadacentral",
+            "tags": {
+                "Migrate Project": "Offline-Migration-Project-58779143"
+            }
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/azmigraterg/providers/microsoft.mysqldiscovery/MySQLSites/Offline-Migrat0590mysql",
+            "name": "Offline-Migrat0590mysql",
+            "type": "microsoft.mysqldiscovery/MySQLSites",
+            "location": "canadacentral",
+            "tags": {
+                "Migrate Project": "Offline-Migration-Project-58779143"
+            }
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/azmigraterg/providers/microsoft.offazure/MasterSites/Offline-Migrat0590masterSite",
+            "name": "Offline-Migrat0590masterSite",
+            "type": "microsoft.offazure/MasterSites",
+            "kind": "Migrate",
+            "location": "canadacentral",
+            "tags": {
+                "Migrate Project": "Offline-Migration-Project-58779143"
+            }
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/AZMigrateRG/providers/Microsoft.Network/connections/conn-onprem-58779143",
+            "name": "conn-onprem-58779143",
+            "type": "Microsoft.Network/connections",
+            "location": "centralus"
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/AZMigrateRG/providers/Microsoft.Migrate/migrateprojects/Migration-Project-58779143",
+            "name": "Migration-Project-58779143",
+            "type": "Microsoft.Migrate/migrateprojects",
+            "location": "centralus",
+            "identity": {
+                "principalId": "01eec2b2-471f-4d00-9a0b-bd98c907c6f9",
+                "tenantId": "4cfe372a-37a4-44f8-91b2-5faf34253c62",
+                "type": "SystemAssigned"
+            },
+            "tags": {
+                "Migrate Project": "Migration-Project-58779143"
+            }
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/AZMigrateRG/providers/Microsoft.DBforPostgreSQL/flexibleServers/pgflex58779143",
+            "name": "pgflex58779143",
+            "type": "Microsoft.DBforPostgreSQL/flexibleServers",
+            "sku": {
+                "name": "Standard_D2ds_v4",
+                "tier": "GeneralPurpose"
+            },
+            "location": "centralus",
+            "tags": {}
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/AZMigrateRG/providers/Microsoft.RecoveryServices/vaults/Migration-Project-58779143-MigrateVault-1147678202",
+            "name": "Migration-Project-58779143-MigrateVault-1147678202",
+            "type": "Microsoft.RecoveryServices/vaults",
+            "sku": {
+                "name": "RS0",
+                "tier": "Standard"
+            },
+            "location": "centralus",
+            "tags": {
+                "Migrate Project": "Migration-Project-58779143"
+            }
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/azmigraterg/providers/Microsoft.ApplicationMigration/discoveryHubs/Offline-Migrat0590hub",
+            "name": "Offline-Migrat0590hub",
+            "type": "Microsoft.ApplicationMigration/discoveryHubs",
+            "location": "canadacentral"
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/AZMigrateRG/providers/Microsoft.Storage/storageAccounts/migrateb74b6lsa46701",
+            "name": "migrateb74b6lsa46701",
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "Storage",
+            "location": "centralus",
+            "tags": {
+                "Migrate Project": "Migration-Project-58779143"
+            }
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/AZMigrateRG/providers/Microsoft.Compute/disks/asrseeddisk-Airsonic-RHEL_VM_-196de20b-23d2-4f47-adfc-3f53ad5ae618",
+            "name": "asrseeddisk-Airsonic-RHEL_VM_-196de20b-23d2-4f47-adfc-3f53ad5ae618",
+            "type": "Microsoft.Compute/disks",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "location": "centralus",
+            "tags": {
+                "asrseeddisk-19eaa9d1-c4d5-4949-8ebb-4fa3f63c5a5b": "This resource is in use by Azure Site Recovery Service."
+            }
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/AZMIGRATERG/providers/Microsoft.Compute/disks/Airsonic-Frontend-OSdisk-00",
+            "name": "Airsonic-Frontend-OSdisk-00",
+            "type": "Microsoft.Compute/disks",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "managedBy": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/AZMigrateRG/providers/Microsoft.Compute/virtualMachines/Airsonic-Frontend",
+            "location": "centralus",
+            "tags": {
+                "AzHydration-ManagedDisk-CreatedBy": "Azure Site Recovery"
+            }
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/AZMigrateRG/providers/Microsoft.Network/networkInterfaces/nic-Airsonic-Frontend-00",
+            "name": "nic-Airsonic-Frontend-00",
+            "type": "Microsoft.Network/networkInterfaces",
+            "location": "centralus",
+            "tags": {}
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/AZMigrateRG/providers/Microsoft.Compute/virtualMachines/Airsonic-Frontend",
+            "name": "Airsonic-Frontend",
+            "type": "Microsoft.Compute/virtualMachines",
+            "location": "centralus",
+            "tags": {}
+        },
+        {
+            "id": "/subscriptions/b74b68b5-ff8c-436e-957f-538a2274659f/resourceGroups/AZMigrateRG/providers/Microsoft.Compute/virtualMachines/Airsonic-Frontend/extensions/LinuxAHBExtension",
+            "name": "Airsonic-Frontend/LinuxAHBExtension",
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "location": "centralus"
+        }
+    ]
+}
