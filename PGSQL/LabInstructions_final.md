@@ -1,5 +1,12 @@
 @lab.Title
 
+## Survey
+
+@lab.ActivityGroup(initialsurvey)
+
+===
+
+
 ## Overview
 
 In this lab, you'll plan and execute a migration of a representative Linux workload from an on-premises datacenter to **Microsoft Azure**. You'll use **Azure Migrate** to discover and assess the environment, choose modernization paths, and then migrate both a database tier (PaaS) and an application tier (IaaS).
@@ -345,6 +352,12 @@ In this task, you'll create an application definition for the Airsonic stack by 
 - Link the Airsonic frontend and backend servers (ensuring workloads are included).
 - Set business criticality/complexity values and create the application.
 
+1. [] In the Azure portal, search for +++Azure Migrate+++ in the search bar and select **Azure Migrate**, under **Services**.
+
+    ![Azure Migrate is displaed in the Azure Search bar and highlighted in the search results.](instructions312691/17-AzureMigrate.png)
+
+1. [] On the **Azure Migrate Project** blade in the Azure portal, open the +++Offline-Migration-Project-@lab.LabInstance.Id+++.
+
 You're grouping the Airsonic Frontend + Backend + discovered workloads (Tomcat + PostgreSQL) into one "application" so you can assess, plan waves, and make PaaS vs IaaS decisions as a stack.
 
 1. [] In the left menu under **Explore applications**, select **Applications**.
@@ -365,7 +378,7 @@ You're grouping the Airsonic Frontend + Backend + discovered workloads (Tomcat +
 
 	>[!Note] Selecting the servers will also select the Web app and Database workloads.
 
-    !IMAGE[y7vhs9bj.jpg](instructions332284/y7vhs9bj.jpg)
+    !IMAGE[link-workloads.png](instructions332747/link-workloads.png)
 
 1. [] Select **Add**.
 
@@ -657,28 +670,6 @@ In this task, you'll create a wave from the assessment's recommended path and th
 	!IMAGE[4yxwz1s1.jpg](instructions332284/4yxwz1s1.jpg)
 
 	>[!Note] You should see the airsonic app that you defined earlier.
-
-1. [] Select the **X** in the top right side of the window, to close the application window.
-
-1. [] Under Workloads, select **2 workload(s) selected**.
-
-	!IMAGE[fckapn3z.jpg](instructions332284/fckapn3z.jpg)
-
-	>[!Note] You should see the 4 servers, with both Supersonic servers selected.
-
-    !IMAGE[kt38tdt9.jpg](instructions332284/kt38tdt9.jpg)
-
-1. [] Select the **X** in the top right side of the window, to close the select workloads window.
-
-1. [] On the left menu, select **Target settings**.
-
-1. [] Review the Tasks associated with each workload.
-
-	!IMAGE[n5g8mikl.jpg](instructions332284/n5g8mikl.jpg)
-
-1. [] Review the **Target settings** associated with each workload.
-
-	!IMAGE[iv4yrxll.jpg](instructions332284/iv4yrxll.jpg)
 
 1. [] On the left menu, select **Migrations**, and review the available options.
 
@@ -1042,7 +1033,7 @@ In this task, you'll start replication for the Airsonic-Frontend VM, apply asses
 
 1. [] Target VM security type: Choose **Standard or Trusted Launch Virtual machines**.
 
-1. []  Import migration settings from an assessment: select **No, I’ll specify the migration settings manually**.
+1. []  Import migration settings from an assessment: select **No, I'll specify the migration settings manually**.
 
 1. []  Check the box next to **Airsonic-Frontend**.
 
@@ -1223,3 +1214,13 @@ Next, you performed migrations:
 At this point, you have:
 - A documented plan and assessment-driven decision trail (business case → assessment → wave plan).
 - A working migrated application stack (VM + PaaS database).
+
+=== 
+>[!Alert] **IMPORTANT:** These labs are hosted on the Skillable platform. Completion data is collected and then exported to Success Factors every Monday. SF require another 1-3 days to process that data. The status for this lab will be visible in Viva and Learning Path next week. 
+>
+Be sure to select "**Submit**" in the bottom right corner to get credit for completing this lab. 
+
+@lab.ActivityGroup(completionsurvey)
+
+>[!Alert] After answering the survey questions, select **submit** to complete and end the lab. **This is required in order to receive credit for lab completion**.
+
