@@ -79,6 +79,8 @@ In this exercise, you'll:
 
 ## Task 01: Create a migration project for offline discovery and assessment
 
+> [!ALERT] **Note**: This step is automated, Proceed until step 6 to verify whether the Azure Migrate project already exists.
+
 ### Introduction
 Terra Firm Laboratories is ready to turn "we should move to Azure" into an actual plan Dennis can track and defend. An Azure Migrate project becomes the team's home base for discovery, assessment, and migration decisions-so everyone is working from the same inventory and the same assumptions.
 
@@ -115,6 +117,8 @@ In this task, you'll create two Azure Migrate projects in the Azure portal. You'
 
     ![Azure Migrate is displayed in the Azure Search bar and highlighted in the search results.](instructions312691/17-AzureMigrate.png)
 
+    > [!ALERT] **Note**: The migration project **Automated-Migration-Project-lab@lab.LabInstance.Id** is pre-created. Proceed with the following steps only if the project does not already exist.
+
 1. [] On the **Azure Migrate** blade, select **Create Project**.
 
 	!IMAGE[xbrke4r4.jpg](instructions331780/xbrke4r4.jpg)
@@ -125,12 +129,12 @@ In this task, you'll create two Azure Migrate projects in the Azure portal. You'
     | -------- | -------- |
     | Subscription | **Accept the default** |
     | Resource group | **AZMigrateRG** |
-    | Project | +++Offline-Migration-Project-@lab.LabInstance.Id+++ |
+    | Project | +++Automated-Migration-Project-lab@lab.LabInstance.Id+++ |
     | Region | **Canada Central** |
 
 1. [] Select **Create**.
 
-1. [] After project creation completes, select **All projects** on the left menu, and then select the **Offline-Migration-Project-@lab.LabInstance.Id** project.
+1. [] After project creation completes, select **All projects** on the left menu, and then select the **Automated-Migration-Project-lab@lab.LabInstance.Id** project.
 
 ---
 
@@ -141,6 +145,8 @@ You created an Azure Migrate project that will store discovery and assessment me
 ===
 
 ## Task 02: Import offline discovery file
+
+> [!ALERT] **Note**: This step is automated, skip it if workloads already appear in the **All Inventory** tile on Overview page of Azure Migrate project.
 
 1. [] 1. Once the project is created, click on **Start discovery** on the project overview page.  
  
@@ -167,7 +173,7 @@ You created an Azure Migrate project that will store discovery and assessment me
 ## Task 03: Create a second Azure Migrate project for VM replication and migration
 
 
-1. [] Open another broswer tab and access the Azure Portal.
+1. [] Open another broswer tab and access the Azure Portal using +++https://aka.ms/migrate/disconnectedappliancewithappcat+++.
 
 1. [] In the portal, search for +++Azure Migrate+++ in the search bar and select **Azure Migrate** under **Services**.
 
@@ -176,6 +182,11 @@ You created an Azure Migrate project that will store discovery and assessment me
 1. [] On the **Azure Migrate** blade, select **Create Project**.
 
 	!IMAGE[xbrke4r4.jpg](instructions331780/xbrke4r4.jpg)
+<!--
+    > [!ALERT]
+    >
+    > The geography MUST align with the region of your resource group's location. For example, if the region of your resource group is Central US and the chosen geography should be United States.
+-->
 
 1. [] On the **Create Project** blade, enter the following:
 	
@@ -184,11 +195,8 @@ You created an Azure Migrate project that will store discovery and assessment me
     | Subscription | **Accept the default** |
     | Resource group | **AZMigrateRG** |
     | Project name | +++Migration-Project-@lab.LabInstance.Id+++ |
-    | Geography | **United States** |
+    | Region | **@lab.CloudResourceGroup(AZMigrateRG).Location** |
 
-    > [!ALERT]
-    >
-    > The geography MUST align with the region of your resource group's location. For example, if the region of your resource group is Central US and the chosen geography should be United States.
 
 1. [] Select **Create**.
 
@@ -201,6 +209,10 @@ You created an Azure Migrate project that will be used to migrate a VM for the r
 ===
 
 ## Task 04: Configure agent for replication and migration
+
+> [!ALERT]
+    >
+    > This task includes multiple steps that require waiting before you can proceed. While waiting, you may open a new browser tab and start other tasks.
 
 1. [] Connect to the HyperV host by using the HyperV-01 Host.rdp icon.
 
@@ -260,9 +272,10 @@ You created an Azure Migrate project that will be used to migrate a VM for the r
 
 1. [] Keep the defaults and select **Install**.
 
+
 1. [] Select **Register** and on the **Vault Settings...** screen, select **Browse**
 
-1. [] On the left menu, select the **Downloads** folder and then select the **Migration-Project-@lab.LabInstance.Id-MigrateVault-@lab.LabInstance.Id_Migration-Project-@lab.LabInstance.Id-HyperVSite_xxxxxxx.VaultCredentials** file.
+1. [] On the left menu, select the **Downloads** folder and then select the **Migration-Project-@lab.LabInstance.Id-MigrateVault-xxxxxx_Migration-Project-@lab.LabInstance.Id-HyperVSite_xxxxxxx.VaultCredentials** file.
 
 1. [] Select **Open**.
    
@@ -309,7 +322,7 @@ In this exercise, you'll:
 - Define an application for a stack by linking the frontend and backend servers and their discovered workloads.
 - Build a business case scoped to the lab environment and review its outputs (scope, cost comparison, savings, and strategy summaries).
 - Explore discovered inventory to confirm servers and workloads were detected.
-- Review the assessment created by the business case and compare modernization options (PaaS preferred, PaaS only, lift-and-shift to Azure VMs).
+- Review the assessment created by the business case and compare modernization options.
 - Create a wave plan from the recommended path, add tasks, review selected applications/workloads, and inspect target settings and migration options.
 - Optionally document a planning-only identity mapping strategy from FreeIPA to Microsoft Entra ID, including admins, users, and service identities.
 
@@ -319,7 +332,7 @@ In this exercise, you'll:
 - A business case named **bc-@lab.LabInstance.Id** exists and reflects the expected scope (workloads/web apps/databases).
 - The assessment **businesscase-bc-@lab.LabInstance.Id** is accessible, shows the expected workload count, and provides clear path comparisons across PaaS and IaaS options.
 - A wave plan named **wave-@lab.LabInstance.Id** exists and includes the Airsonic application and expected workloads, with tasks and target settings reviewed.
-- A FreeIPA-to-Entra identity mapping table is completed with at least six entries covering admin, user, and service identities.
+- (Optional) A FreeIPA-to-Entra identity mapping table is completed with at least six entries covering admin, user, and service identities.
 
 ## Key tasks
 
@@ -354,9 +367,9 @@ In this task, you'll create an application definition for the Airsonic stack by 
 
 1. [] In the Azure portal, search for +++Azure Migrate+++ in the search bar and select **Azure Migrate**, under **Services**.
 
-    ![Azure Migrate is displaed in the Azure Search bar and highlighted in the search results.](instructions312691/17-AzureMigrate.png)
+    ![Azure Migrate is displayed in the Azure Search bar and highlighted in the search results.](instructions312691/17-AzureMigrate.png)
 
-1. [] On the **Azure Migrate Project** blade in the Azure portal, open the +++Offline-Migration-Project-@lab.LabInstance.Id+++.
+1. [] On the **Azure Migrate Project** blade in the Azure portal, open the +++Automated-Migration-Project-lab@lab.LabInstance.Id+++.
 
 You're grouping the Airsonic Frontend + Backend + discovered workloads (Tomcat + PostgreSQL) into one "application" so you can assess, plan waves, and make PaaS vs IaaS decisions as a stack.
 
@@ -425,11 +438,13 @@ In this task, you'll build a business case scoped to the environment and confirm
 
     ![Azure Migrate is displaed in the Azure Search bar and highlighted in the search results.](instructions312691/17-AzureMigrate.png)
 
-1. [] On the **Azure Migrate Project** blade in the Azure portal, open the +++Offline-Migration-Project-@lab.LabInstance.Id+++. Expand the **Decide and Plan** in the left menu, then select **Business cases**. Further select **Build business case** in the main page
+1. [] On the **Azure Migrate Project** blade in the Azure portal, open the +++Automated-Migration-Project-lab@lab.LabInstance.Id+++. Expand the **Decide and Plan** in the left menu, then select **Business cases**. Further select **Build business case** in the main page
 
 1. [] Enter +++bc-@lab.LabInstance.Id+++ for the Business case name, then select **Entire datacenter**.
 
 	!IMAGE[k6lmul2t.jpg](instructions332284/k6lmul2t.jpg)
+
+1. [] Click on **Next**.
 
 1. [] On the **Build business case (Preview)** page, enter the following:
 
@@ -449,7 +464,7 @@ In this task, you'll build a business case scoped to the environment and confirm
 
 ## Explore the discovered inventory
 
-1. [] On the Azure Migrate blade, select **All projects**, and then select the **Migration-Project-@lab.LabInstance.Id** project.
+1. [] On the Azure Migrate blade, select **All projects**, and then select the **Automated-Migration-Project-lab@lab.LabInstance.Id** project.
 
 1. [] On the left navigation menu, expand **Explore Inventory**.
 
@@ -562,39 +577,52 @@ In this task, you'll open the assessment created by the business case and compar
 
 1. [] Select the **businesscase-bc-@lab.LabInstance.Id** assessment.
 
-1. [] Ensure that **4** Workloads are displayed and that the Migration preference is set to **Modernize**.
+1. [] Ensure that the number of Applications is **1** is shown and that the Migration preference is set to **Modernize**
 
-	!IMAGE[c4l7amcd.jpg](instructions332284/c4l7amcd.jpg)
+	!IMAGE[applications-1.png](instructions332747/applications-1.png)
+
+1. [] Click on **View details** and ensure that  **airsonic-app-@lab.LabInstance.Id** has **4** workloads.
+
+	!IMAGE[assessment-4-workloads.png](instructions332747/assessment-4-workloads.png)
+
+1. [] Close out of this blade using the **X** in the top right of the portal to return to the Assessment overview.
+
+	!IMAGE[return-to-assessment-overview.png](instructions332747/return-to-assessment-overview.png)
 
 1. [] Compare the migration options between PaaS preferred, Paas only, and Lift and shift to Azure VM.
 
-1. [] On the **Paas preferred** tile, select **View details**.
+1. [] On the **Paas preferred** tile, select **View details** and observe.
 
 	!IMAGE[n9g0c9h0.jpg](instructions332284/n9g0c9h0.jpg)
-
+<!--
 1. [] Observe the recommended migration path and readiness state:
 
 	- Replatform the Web app to an App Service Container.
     - Replatform the PostgreSQL instance to Azure Database for PostgreSQL.
     - Rehost the two remaining Servers to Azure VMs.
+-->
 
-1. [] On the top menu, select **Paas only**
+1. [] On the top menu, select **Paas only** and observe.
 
 	!IMAGE[45faob97.jpg](instructions332284/45faob97.jpg)
 
+<!--
 1. [] Observe the recommended migration path and readiness state:
 
 	- Replatform the Web app to AKS.
     - Replatform the PostgreSQL instance to Azure Database for PostgreSQL.
     - Rehost the two remaining Servers to Azure VMs.
+-->
 
-1. [] On the top menu, select **Lift and shift Azure VM**.
+1. [] On the top menu, select **Lift and shift Azure VM** and observe.
 
+  !IMAGE[fzghg18z.jpg](instructions332284/fzghg18z.jpg)
+
+<!--
 1. [] Observe the recommended migration path and readiness state:
 
-    !IMAGE[fzghg18z.jpg](instructions332284/fzghg18z.jpg)
-
-    - Rehost the all 4 Servers to Azure VMs.
+    - Rehost the 2 Servers to Azure VMs.
+-->
 
 1. [] Select the **X** in the top right corner to close the assessment page.
 
@@ -769,6 +797,10 @@ In this task, you'll run the provided PowerShell script to establish VPN connect
 
 	>[!Note] You can safely minimize the PowerShell window while it connects the VPN.
 
+    > [!ALERT]
+    >
+    > PowerShell will close once a connection is established.
+
 #### Congratulations! 
 You established hybrid connectivity from the lab environment to Azure so private endpoints and internal Azure resources can be reached during migration and validation.
 
@@ -804,7 +836,7 @@ You established hybrid connectivity from the lab environment to Azure so private
 
 1. [] Return to the Azure portal and confirm that your PostgreSQL Flexible Server deployment is complete.
 
-	>[!Note] If the deployment has not completed, wait for it to finish before you continue to the next step.
+	>[!Note] Review if "Azure Database for PostgreSQL flexible server" resource deployed in the AZMigrateRG Resource Group. If the deployment has not completed, wait for it to finish before you continue to the next step.
 
 #### Congratulations! 
 You created an identifiable marker in the application and confirmed the pre-migration database endpoint so you can clearly validate the migration outcome later.
@@ -830,9 +862,9 @@ In this task, you'll locate the private DNS record for the flexible server and r
 
 1. [] In the Azure portal search bar, search for and then select +++Private DNS zones+++.
 
-1. [] Select the Private DNS zone that begins with **pgsql-flex-@lab.LabInstance.Id.xxxxxxxx**.
+1. [] Select the **privatelink.postgres.database.azure.com** Private DNS zone.
 
-1. [] Select the number that appears under **Recordsets** (2).
+1. [] Select the number that appears corresponding to **Recordsets** (2).
 
 	!IMAGE[55fvhdc0.jpg](instructions332284/55fvhdc0.jpg)
 
@@ -868,9 +900,9 @@ In this task, you'll run a validation migration job, review results for errors, 
 
 ## Setup the validation and migration job
 
-1. [] On the pgsql-flex-@lab.LabInstance.Id resource, find the **Migration** blade in the left menu.
+1. [] On the **pgflex@lab.LabInstance.Id** resource, find the **Migration** blade in the left menu.
 
-1. [ ] On the pgsql-flex-@lab.LabInstance.Id | Migration page, select **+ Create**.
+1. [ ] On the **pgflex@lab.LabInstance.Id | Migration** page, select **+ Create**.
 
 1. [] On the **Setup** tab, enter the following values:
 
