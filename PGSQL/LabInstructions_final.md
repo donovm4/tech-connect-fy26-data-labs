@@ -591,38 +591,31 @@ In this task, you'll open the assessment created by the business case and compar
 
 1. [] Compare the migration options between PaaS preferred, Paas only, and Lift and shift to Azure VM.
 
-1. [] On the **Paas preferred** tile, select **View details** and observe.
+1. [] On the **Paas preferred** tile, select **View details**.
 
 	!IMAGE[n9g0c9h0.jpg](instructions332284/n9g0c9h0.jpg)
-<!--
+
 1. [] Observe the recommended migration path and readiness state:
 
-	- Replatform the Web app to an App Service Container.
     - Replatform the PostgreSQL instance to Azure Database for PostgreSQL.
-    - Rehost the two remaining Servers to Azure VMs.
--->
+    - Rehost the 2 Servers to Azure VMs.
 
-1. [] On the top menu, select **Paas only** and observe.
+1. [] On the top menu, select **Paas only**.
 
 	!IMAGE[45faob97.jpg](instructions332284/45faob97.jpg)
 
-<!--
 1. [] Observe the recommended migration path and readiness state:
 
-	- Replatform the Web app to AKS.
     - Replatform the PostgreSQL instance to Azure Database for PostgreSQL.
-    - Rehost the two remaining Servers to Azure VMs.
--->
+    - Rehost the 2 Servers to Azure VMs.
 
-1. [] On the top menu, select **Lift and shift Azure VM** and observe.
+1. [] On the top menu, select **Lift and shift Azure VM**.
 
   !IMAGE[fzghg18z.jpg](instructions332284/fzghg18z.jpg)
 
-<!--
 1. [] Observe the recommended migration path and readiness state:
 
     - Rehost the 2 Servers to Azure VMs.
--->
 
 1. [] Select the **X** in the top right corner to close the assessment page.
 
