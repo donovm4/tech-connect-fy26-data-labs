@@ -195,7 +195,7 @@ You created an Azure Migrate project that will store discovery and assessment me
     | Subscription | **Accept the default** |
     | Resource group | **AZMigrateRG** |
     | Project name | +++Migration-Project-@lab.LabInstance.Id+++ |
-    | Region | **@lab.CloudResourceGroup(AZMigrateRG).Location** |
+    | Region | Central US |
 
 
 1. [] Select **Create**.
